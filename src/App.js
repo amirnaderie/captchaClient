@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import "./App.css";
+import Captcha from "./components/Captcha/captcha";
 
 function App() {
+   const [refreshcaptcha, setRefreshcaptcha] = useState(0);
+   
+   const captchaChange=(captchaState)=>{
+    console.log(captchaState);
+  }
+    
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      
+      <Captcha onChange={captchaChange} refresh={refreshcaptcha}  Placeholder="Please Enter Text" />
+      <button
+        onClick={() => {
+          setRefreshcaptcha((refreshcaptcha) => refreshcaptcha + 1);
+        }}
+      >
+         click
+      </button>
+     
+    </React.Fragment>
   );
 }
 
